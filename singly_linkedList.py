@@ -53,8 +53,7 @@ class SinglyLinkedList:
       print(cur.value, end=" --> ")
       cur = cur.next
     
-    
-linkedList = SinglyLinkedList()
+# linkedList = SinglyLinkedList()
 # linkedList.insertAtBeginning(4)
 # linkedList.insertAtBeginning(5)
 # linkedList.insertAtEnd(6)
@@ -62,5 +61,57 @@ linkedList = SinglyLinkedList()
 # linkedList.insertAtBeginning(9)
 # linkedList.insertAtAny(6, 10)
 # linkedList.insertAtAny(1, 20)
-linkedList.insertAtAny(23, 20)
-linkedList.display()
+# linkedList.insertAtAny(23, 20)
+# linkedList.display()
+
+# Definition for singly-linked list.
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+
+class Solution:
+    def middleNode(self, head: ListNode) -> ListNode:
+        slow = head
+        fast = head
+
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+
+        return slow
+
+
+def build_linked_list(values):
+    if not values:
+        return None
+
+    head = ListNode(values[0])
+    current = head
+
+    for value in values[1:]:
+        current.next = ListNode(value)
+        current = current.next
+
+    return head
+
+
+def print_linked_list(head):
+    current = head
+    result = []
+
+    while current:
+        result.append(current.val)
+        current = current.next
+
+    print(result)
+
+
+head1 = build_linked_list([1, 2, 3, 4, 5])
+middle1 = Solution().middleNode(head1)
+print_linked_list(middle1)
+
+head2 = build_linked_list([1, 2, 3, 4, 5, 6])
+middle2 = Solution().middleNode(head2)
+print_linked_list(middle2)
