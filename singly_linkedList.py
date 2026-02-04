@@ -24,6 +24,26 @@ class SinglyLinkedList:
     while cur.next is not None:
       cur = cur.next
     cur.next = node
+    
+  def insertAtAny(self, pos, val):
+    node = Node(val)
+    if self.head is None:
+      print('Error: The list is empty!!!')
+      return
+    
+    if self.head.value == pos:
+      node.next = self.head
+      self.head = node
+      return
+    
+    cur = self.head
+    while cur.next is not None:
+      if cur.next.value == pos:
+        node.next = cur.next
+        cur.next = node
+        return
+      cur = cur.next
+    print("Error: The value is not present on the list!!!")
   
   def display(self):
     if self.head is None:
@@ -35,9 +55,12 @@ class SinglyLinkedList:
     
     
 linkedList = SinglyLinkedList()
-linkedList.insertAtBeginning(4)
-linkedList.insertAtBeginning(5)
-linkedList.insertAtEnd(6)
-linkedList.insertAtEnd(1)
-linkedList.insertAtBeginning(9)
+# linkedList.insertAtBeginning(4)
+# linkedList.insertAtBeginning(5)
+# linkedList.insertAtEnd(6)
+# linkedList.insertAtEnd(1)
+# linkedList.insertAtBeginning(9)
+# linkedList.insertAtAny(6, 10)
+# linkedList.insertAtAny(1, 20)
+linkedList.insertAtAny(23, 20)
 linkedList.display()
