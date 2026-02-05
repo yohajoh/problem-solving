@@ -140,8 +140,19 @@ class Solution1:
 
 
 class Solution2:
-    def deleteNode(self, node):
+    def deleteNode(self, head, node):
         """
         :type node: ListNode
         :rtype: void Do not return anything, modify node in-place instead.
         """
+        cur = head
+        while cur.next:
+          if cur.next.val == node.val:
+            cur.next = cur.next.next
+          cur = cur.next
+          
+node = ListNode(2)
+head1 = build_linked_list([1,2,4]) 
+print_linked_list(head1)
+Solution2().deleteNode(head1, node)
+print_linked_list(head1)
