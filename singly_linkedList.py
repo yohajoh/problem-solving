@@ -70,19 +70,6 @@ class ListNode:
         self.val = val
         self.next = next
 
-
-class Solution:
-    def middleNode(self, head: ListNode) -> ListNode:
-        slow = head
-        fast = head
-
-        while fast and fast.next:
-            slow = slow.next
-            fast = fast.next.next
-
-        return slow
-
-
 def build_linked_list(values):
     if not values:
         return None
@@ -95,8 +82,7 @@ def build_linked_list(values):
         current = current.next
 
     return head
-
-
+  
 def print_linked_list(head):
     current = head
     result = []
@@ -107,11 +93,55 @@ def print_linked_list(head):
 
     print(result)
 
+class Solution:
+    def middleNode(self, head: ListNode) -> ListNode:
+        slow = head
+        fast = head
 
-head1 = build_linked_list([1, 2, 3, 4, 5])
-middle1 = Solution().middleNode(head1)
-print_linked_list(middle1)
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
 
-head2 = build_linked_list([1, 2, 3, 4, 5, 6])
-middle2 = Solution().middleNode(head2)
-print_linked_list(middle2)
+        return slow
+
+# head1 = build_linked_list([1, 2, 3, 4, 5])
+# middle1 = Solution().middleNode(head1)
+# print_linked_list(middle1)
+
+# head2 = build_linked_list([1, 2, 3, 4, 5, 6])
+# middle2 = Solution().middleNode(head2)
+# print_linked_list(middle2)
+
+
+class Solution1:
+    def mergeTwoLists(self, list1: ListNode, list2: ListNode) -> ListNode:
+        dummy = ListNode(0)
+        curr = dummy
+        
+        while list1 and list2:
+            if list1.val <= list2.val:
+                curr.next = list1
+                list1 = list1.next
+            else:
+                curr.next = list2
+                list2 = list2.next
+            curr = curr.next
+        curr.next = list1 if list1 else list2
+        
+        return dummy.next
+          
+# head1 = build_linked_list([1,2,4]) 
+# print_linked_list(head1)
+# head2 = build_linked_list([1,3,4])
+# print_linked_list(head2) 
+
+# Solution1().mergeTwoLists(head1, head2)
+# print_linked_list(head1)             
+
+
+class Solution2:
+    def deleteNode(self, node):
+        """
+        :type node: ListNode
+        :rtype: void Do not return anything, modify node in-place instead.
+        """
