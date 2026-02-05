@@ -151,8 +151,23 @@ class Solution2:
             cur.next = cur.next.next
           cur = cur.next
           
-node = ListNode(2)
-head1 = build_linked_list([1,2,4]) 
-print_linked_list(head1)
-Solution2().deleteNode(head1, node)
-print_linked_list(head1)
+# node = ListNode(2)
+# head1 = build_linked_list([1,2,4]) 
+# print_linked_list(head1)
+# Solution2().deleteNode(head1, node)
+# print_linked_list(head1)
+
+
+class Solution3:
+    def deleteDuplicates(self, head: ListNode) -> ListNode:
+       cur = head
+       while cur.next:
+         if cur.val == cur.next.val:
+           cur.next = cur.next.next
+         else:
+           cur = cur.next
+         
+head = build_linked_list([1,1,2,3,3]) 
+print_linked_list(head)
+Solution3().deleteDuplicates(head)
+print_linked_list(head)
